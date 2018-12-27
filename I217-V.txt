@@ -1,0 +1,44 @@
+Check the adapter state (this is always disabled on boot for me):
+
+    sudo lshw -C network
+    
+
+Make the network connection active:
+
+    sudo ifconfig eno1 up
+
+
+At this point network is unreachable:
+
+    networking service is up and running
+
+    adapter doesn't seem to have any ip or netmask at this point - check this
+
+    nameserver is set to 127.0.0.53
+
+    setting the name server to 8.8.8.8 does nothing
+
+    at this point there is no route for the ethernet connection
+
+
+
+Manually set the ipv4 setting for the ethernet adapter
+
+    sudo ifconfig eno1 192.168.0.15 netmask 255.255.255.0
+
+
+Set the default gateway
+
+    sudo route add default gw 192.168.0.1 eno1
+
+
+Set the defualt nameserver - this only works as root sometimes, now it pretty much only works when switching the entire terminal to run as root with sudo -i:
+
+    echo "nameserver 8.8.8.8" > /etc/resolv.conf
+
+	This quite often results in permission denied even using root privlidges. You have to switch to the root account to get this to work.
+
+    Switch to root account and run the command again.
+
+        sudo -i
+
