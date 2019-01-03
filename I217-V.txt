@@ -42,3 +42,19 @@ Set the defualt nameserver - this only works as root sometimes, now it pretty mu
 
         sudo -i
 
+
+
+From ubuntu forums (this seems to work just fine):
+
+    You can install a package resolvconf, which will modify the way /etc/resolv.conf is built up at system boot.
+
+    sudo apt install resolvconf
+
+    You can then create or modify a file /etc/resolvconf/resolv.conf.detail. If you put in this file a line nameserver 8.8.8.8, this line will be added at the end of /run/resolvconf/resolv.conf at boot. /etc/resolv.conf will now be a symbolic link to this file.
+
+
+I also wrote the script nic_fix.py, which when run with:
+
+    sudo python nic_fix.py
+
+    seems to clear up the problem.
