@@ -25,3 +25,53 @@ But at least I don't have to go through the sound mixed to enable sound anymore.
 Run with:
 
 `sudo python sound_fix.py`
+
+
+# Bluetooth problems
+
+## bluetooth management
+
+`btmgmt`
+
+## bluetooth control
+
+`bluetoothctl`
+
+## MAC address of headphones
+```
+38:18:4C:17:DA:4E
+```
+
+## list bluetooth adapters
+
+`hciconfig -a`
+
+or
+
+```
+bluetoothctl
+list
+```
+
+## intel based controllor that never works properly
+```
+80:32:53:71:12:03
+```
+## Good controllor
+```
+5C:F3:70:9C:CA:D3
+```
+## select a controllor
+```
+select 5C:F3:70:9C:CA:D3
+```
+## how to connect - the actual solution to my problem
+```bash
+bluetoothctl
+select 5C:F3:70:9C:CA:D3
+connect 38:18:4C:17:DA:4E
+```
+      
+      
+      
+      
